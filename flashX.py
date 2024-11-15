@@ -35,12 +35,12 @@ with open("info.json", "r") as f:
     author = data["author"]
 
 # ...
-print(F.WHITE + '-' * 60)
+print(F.RESET + '-' * 60)
 print(f"""
 Version : {F.CYAN}{version} {F.RESET}( {F.CYAN}2024 {F.WHITE}- {F.CYAN}11 {F.WHITE}- {F.CYAN}16 {F.RESET}).
 Author  : {F.CYAN}{author}{F.RESET}.
 """)
-print(F.WHITE + '-' * 60)
+print(F.RESET + '-' * 60)
 
 # 
 def listMethod():
@@ -50,7 +50,7 @@ def listMethod():
 {F.CYAN}3- {F.RESET}SLOWLORIS {F.CYAN}( SOON ){F.RESET}.
 ''')
     try:
-        choiceMethod = int(input(f'''{F.WHITE}┌─({F.CYAN}flash-X{F.WHITE})─({F.YELLOW}~ Method{F.WHITE})
+        choiceMethod = int(input(f'''{F.RESET}┌─({F.CYAN}flash-X{F.RESET})─({F.YELLOW}~ Method{F.RESET})
 └──{F.YELLOW}~# {F.CYAN}'''))
     except ValueError:
         print(f"{F.RED}( !!! ) Error! Invalid input.")
