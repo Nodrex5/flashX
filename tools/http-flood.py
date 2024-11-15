@@ -18,7 +18,7 @@ import cfonts
 os.system('clear')
 
 # 
-with open("../info.json", "r") as f:
+with open("info.json", "r") as f:
     data = json.load(f)
     version = data["version"]
     author = data["author"]
