@@ -57,7 +57,7 @@ def build_block(size: int) -> str:
 
 def referer_bot() -> str:
     
-    with open("../bots/bot.txt", "r") as b:
+    with open("bot.txt", "r") as b:
         bot = b.readlines()
         random_bot = random.choice(bot).strip()
         block = build_block(random.randint(3, 15))
