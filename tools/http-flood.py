@@ -125,7 +125,7 @@ if __name__ == "__main__":
     target_url = input(f'\n{F.RESET}┌─({F.CYAN}flashX{F.RESET})─({F.YELLOW}~ TARGET URL{F.RESET})\n└──{F.YELLOW}~: {F.CYAN}')
     num_threads = int(input(f'\n{F.RESET}┌─({F.CYAN}flashX{F.RESET})─({F.YELLOW}~ THREADS{F.RESET})\n└──{F.YELLOW}~: {F.CYAN}'))
     duration = int(input(f'\n{F.RESET}┌─({F.CYAN}flashX{F.RESET})─({F.YELLOW}~ TIME ATTACK{F.RESET})\n└──{F.YELLOW}~: {F.CYAN}'))
-    time_sleep = int(input(f'\n{F.RESET}┌─({F.CYAN}flashX{F.RED})─({F.YELLOW}~ TIME SLEEP{F.RESET})\n└──{F.YELLOW}~: {F.CYAN}'))
+    time_sleep = int(input(f'\n{F.RESET}┌─({F.CYAN}flashX{F.RESET})─({F.YELLOW}~ TIME SLEEP{F.RESET})\n└──{F.YELLOW}~: {F.CYAN}'))
 
     print(f"""
 - {F.RESET} Attack On {F.CYAN}{target_url}{F.RESET} For {F.CYAN}{duration}{F.RESET} Using {F.CYAN}{num_threads} Threads.
