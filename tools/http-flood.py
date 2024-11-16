@@ -63,6 +63,9 @@ def referer_bot() -> str:
         block = build_block(random.randint(3, 15))
     return random_bot + block
 
+
+botRef = referer_bot()
+
 def generate_headers() -> Dict[str, str]:
     """ headers HTTP."""
     return {
@@ -74,7 +77,7 @@ def generate_headers() -> Dict[str, str]:
         "Accept-Encoding": "gzip, deflate, br",
         "Accept-Charset": "ISO-8859-1,utf-8;q=0.7,*;q=0.7",
         "Accept-Language": "en-US,en;q=0.9",
-        "Referer": referer_bot(),
+        "Referer": botRef,
         "DNT": "1",
         "Upgrade-Insecure-Requests": "1",
         "Connection": "keep-alive",
