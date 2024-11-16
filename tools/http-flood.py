@@ -124,10 +124,10 @@ def start_flooding(target: str, thread_count: int, duration: int, time_sleep: in
 if __name__ == "__main__":
 
 
-    target_url = input(f'\n{F.CYAN}┌─({F.GREEN}flashX{F.CYAN})─({F.YELLOW}~ TARGET URL{F.CYAN})\n└──{F.YELLOW}~: {F.GREEN}')
-    num_threads = int(input(f'\n{F.CYAN}┌─({F.GREEN}flashX{F.CYAN})─({F.YELLOW}~ THREADS{F.CYAN})\n└──{F.YELLOW}~: {F.GREEN}'))
-    duration = int(input(f'\n{F.CYAN}┌─({F.GREEN}flashX{F.CYAN})─({F.YELLOW}~ TIME ATTACK{F.CYAN})\n└──{F.YELLOW}~: {F.GREEN}'))
-    time_sleep = int(input(f'\n{F.CYAN}┌─({F.GREEN}flashX{F.CYAN})─({F.YELLOW}~ TIME SLEEP{F.CYAN})\n└──{F.YELLOW}~: {F.GREEN}'))
+        target_url = input(f'\n{F.RESET}┌─({F.CYAN}flashX{F.RESET})─({F.YELLOW}~ TARGET URL{F.RESET})\n└──{F.YELLOW}~: {F.CYAN}')
+    num_threads = int(input(f'\n{F.RESET}┌─({F.CYAN}flashX{F.RESET})─({F.YELLOW}~ THREADS{F.RESET})\n└──{F.YELLOW}~: {F.CYAN}'))
+    duration = int(input(f'\n{F.RESET}┌─({F.CYAN}flashX{F.RESET})─({F.YELLOW}~ TIME ATTACK{F.RESET})\n└──{F.YELLOW}~: {F.CYAN}'))
+    time_sleep = int(input(f'\n{F.RESET}┌─({F.CYAN}flashX{F.RESET})─({F.YELLOW}~ TIME SLEEP{F.RESET})\n└──{F.YELLOW}~: {F.CYAN}'))
 
     print(f"""
 - {F.GREEN} Attack On : {F.RED}{target_url}{F.RESET}
