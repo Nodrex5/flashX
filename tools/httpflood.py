@@ -89,7 +89,7 @@ def referesBot():
         'http://www.bing.com/',
         'http://www.baidu.com/',
         'http://www.yandex.com/',
-        'http://' + host + '/'
+        #'http://' + host + '/'
     ]
     return random.choice(bots) + generateQueryString(random.randint(1, 10))
 
