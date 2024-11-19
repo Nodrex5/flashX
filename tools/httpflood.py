@@ -45,7 +45,7 @@ logo = cfonts.render(
 print(logo)
 print('-' * 60)
 print(f"""
-Version : {F.CYAN}{version} {F.RESET}( {F.CYAN}2024 {F.WHITE}- {F.CYAN}11 {F.WHITE}- {F.CYAN}16 {F.RESET}).
+Version : {F.CYAN}{version} {F.RESET}( {F.CYAN}2024 {F.WHITE}- {F.CYAN}11 {F.WHITE}- {F.CYAN}20 {F.RESET}).
 Auther  : {F.CYAN}{auther}{F.RESET}.
 Method  : {F.CYAN}HTTP{F.RESET}.
 """)
