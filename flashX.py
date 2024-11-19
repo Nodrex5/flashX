@@ -32,7 +32,7 @@ print(logo)
 with open("info.json", "r") as f:
     data = json.load(f)
     version = data["version"]
-    author = data["author"]
+    author = data["auther"]
 
 # ...
 print(F.RESET + '-' * 60)
