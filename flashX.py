@@ -57,7 +57,7 @@ def listMethod():
         return
 
     if choiceMethod == 1:
-        os.system('cmd /k "python3 tools/http-flood.py"' if os.name == 'nt' else 'python3 tools/http-flood.py')
+        os.system('cmd /k "python3 tools/httpflood.py"' if os.name == 'nt' else 'python3 tools/httpflood.py')
     elif choiceMethod == 2:
         print('SOON: UDP implementation is in progress.')
     elif choiceMethod == 3:
