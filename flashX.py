@@ -37,7 +37,7 @@ with open("info.json", "r") as f:
 # ...
 print(F.RESET + '-' * 60)
 print(f"""
-Version : {F.CYAN}{version} {F.RESET}( {F.CYAN}2024 {F.WHITE}- {F.CYAN}11 {F.WHITE}- {F.CYAN}16 {F.RESET}).
+Version : {F.CYAN}{version} {F.RESET}( {F.CYAN}2024 {F.WHITE}- {F.CYAN}11 {F.WHITE}- {F.CYAN}20 {F.RESET}).
 Author  : {F.CYAN}{author}{F.RESET}.
 """)
 print(F.RESET + '-' * 60)
