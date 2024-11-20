@@ -18,7 +18,7 @@ from requests.exceptions import ConnectionError, Timeout
 
 os.system('clear')
 
-with open("../info.json", "r") as f:
+with open("info.json", "r") as f:
     data = json.load(f)
     version = data["version"]
     auther = data["auther"]
